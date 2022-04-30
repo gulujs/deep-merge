@@ -610,4 +610,20 @@ describe('deepMerge', () => {
     expect(result.wat).to.equal(uniqueValue);
     expect(customMergeWasCalled, 'custom merge function was called').to.be.true;
   });
+
+  it('ignore unsafe keys in target but safe on the source', () => {
+    const target = {
+      foo: 1
+    };
+    Object.defineProperty(target, 'bar', {
+      enumerable: false,
+      value: 2
+    });
+    const source = {
+      foo: 3,
+      bar: 4
+    };
+    const res = deepMerge(target, source);
+    expect(res).to.deep.equal({ foo: 3 });
+  });
 });

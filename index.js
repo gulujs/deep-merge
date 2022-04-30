@@ -36,7 +36,7 @@ function objectMerge(target, source, path, mergeProgram) {
   const sourceKeys = mergeProgram.getKeys(source);
   for (const key of sourceKeys) {
     if (mergeProgram.propertyIsUnsafe(target, key)) {
-      return;
+      continue;
     }
 
     if (mergeProgram.propertyIsOnObject(target, key) && mergeProgram.isMergeableObject(source[key])) {
