@@ -49,7 +49,7 @@ function objectMerge(target, source, path, mergeProgram) {
   return dest;
 }
 
-class DeepMergeProgram {
+export class DeepMergeProgram {
   constructor(options = {}) {
     this.isMergeableObject = options.isMergeableObject || isMergeableObject;
     this.arrayMerge = options.arrayMerge || arrayMerge;
