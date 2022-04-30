@@ -37,6 +37,8 @@ export class DeepMergeProgram {
 
   constructor(options: DeepMergeOptions);
 
+  merge<T, S>(target: T, source: S): MergeResult<T, S>;
+  merge<T>(target: Partial<T>, source: Partial<T>): T;
   merge<T, S>(target: T, source: S, path: Array<string | number | symbol>): MergeResult<T, S>;
   merge<T>(target: Partial<T>, source: Partial<T>, path: Array<string | number | symbol>): T;
   mergeUnlessCustomSpecified<T, S>(target: T, source: S, path: Array<string | number | symbol>): MergeResult<T, S>;
